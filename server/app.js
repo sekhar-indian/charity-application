@@ -30,7 +30,9 @@ Users.hasMany(Payment);
 Payment.belongsTo(Donation_items);
 Donation_items.hasMany(Payment);
 
+Users.belongsToMany(Donation_items,{through:"users_donations"});
+Donation_items.belongsToMany(Users,{through:"users_donations"});
 
-sequelize.sync({force:true})
+sequelize.sync()
 .then(res=>app.listen(4000))
 .catch(err=>console.log(err))

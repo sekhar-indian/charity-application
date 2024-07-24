@@ -31,6 +31,7 @@ const signup=async (req,res,next)=>{
     try{
         const hashPassword=await bcript.hash(password,2);
         const user= await Users.create({name:name,email:email,password:hashPassword});
+        res.status(200).send('ok')
     }catch(err){
         console.log(err)
     }
